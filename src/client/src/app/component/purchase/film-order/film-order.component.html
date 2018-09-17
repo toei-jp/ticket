@@ -1,0 +1,7 @@
+<div class="info">
+    <p class="title mb-xx-small">{{ filmInfo.workPerformed.name }}</p>
+    <div class="date small-x-text icon-time-gray text-light-gray">{{ filmInfo.workPerformed.duration | duration: 'minutes' }}分</div>
+</div>
+<div class="scroll">
+    <app-film-order-performance *ngFor="let film of data.films" [performance]="film"></app-film-order-performance>
+</div>

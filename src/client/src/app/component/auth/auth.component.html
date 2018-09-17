@@ -1,0 +1,16 @@
+<div class="contents position-center">
+    <div class="inner center">
+        <div class="logo text-center mb-large">
+            <img src="/assets/images/common/logo.svg">
+        </div>
+        <p class="read text-center mb-middle">初めてアプリをご利用なさる方は
+            <br>下のボタンから会員登録をおこなってください。</p>
+        <button class="btn btn-primary btn-block mb-large" routerLink="/auth/walkThrough">アプリを初めてご利用の方</button>
+        <p class="read text-center mb-middle">既に会員登録済みの方は
+            <br>下のボタンよりログインしてください。</p>
+            <button class="btn btn-info btn-block mb-small" (click)="signInWithTerminal()">端末IDで認証</button>
+        <button class="btn btn-info btn-block mb-small" (click)="signIn()">Amazon Cognito</button>
+        <button class="btn btn-info btn-block" routerLink="/auth/signIn">会員登録済みの方</button>
+    </div>
+</div>
+<app-loading *ngIf="isLoading"></app-loading>

@@ -1,0 +1,36 @@
+:host {
+    padding-right: 5px;
+}
+.performance {
+    background-color: #B2B2B2;
+    padding: 10px;
+    position: relative;
+    width: 120px;
+    &.vacancy-large {
+        background-color: #0563C1;
+    }
+    &.vacancy-little {
+        background-color: #F2C300;
+    }   
+    &.vacancy-full {
+        background-color: #B2B2B2;
+    }
+    .screen {
+        padding-right: 27px;
+    }
+    .status {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        &.window {
+            border: 1px solid #6D6D6D;
+            padding: 2px;
+            color: #6D6D6D;
+        }
+    }
+    .service {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+    }
+}

@@ -1,0 +1,14 @@
+<div class="ticket-info">
+    <div class="index small-text">{{ (index + 1) }}/{{ reservation.acceptedOffers.length }}</div>
+    <div class="mb-x-small small-text">{{ reservation.confirmationNumber }}</div>
+    <div class="large-x-text mb-x-small">{{ offer.itemOffered.reservedTicket.ticketedSeat.seatNumber }}</div>
+    <div class="small-text">{{ offer.itemOffered.reservedTicket.coaTicketInfo.ticketName }}</div>
+</div>
+<div *ngIf="!showQrCode" class="not-qr">
+    <p class="inner small-text text-center">鑑賞日前日から
+        <br>QRコードが
+        <br>表示されます。</p>
+</div>
+<div *ngIf="showQrCode" class="qr">
+    <img [src]="qrCode">
+</div>

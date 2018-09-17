@@ -1,0 +1,27 @@
+<div class="cover" [class.active]="isOpen" (click)="close.emit()"></div>
+
+<div class="menu" [class.active]="isOpen">
+    <!-- <div class="title">{{ name }}</div> -->
+    <ul>
+        <li>
+            <span routerLink="/ticket" routerLinkActive="active" (click)="close.emit()" class="icon-inline icon-about-white">HOME画面</span>
+        </li>
+        <li>
+            <span routerLink="/about" routerLinkActive="active" (click)="close.emit()" class="icon-inline icon-about-white">このアプリについて</span>
+        </li>
+        <!-- <li><span routerLink="/profile" routerLinkActive="active" (click)="close.emit()" class="icon-inline icon-user-white">ユーザー情報変更</span></li> -->
+        <li>
+            <span routerLink="/policy" routerLinkActive="active" (click)="close.emit()" class="icon-inline icon-text-white">利用規約</span>
+        </li>
+        <li>
+            <span routerLink="/law" routerLinkActive="active" (click)="close.emit()" class="icon-inline icon-text-white">特定商取引法に基づく表記</span>
+        </li>
+        <li>
+            <span routerLink="/privacy" routerLinkActive="active" (click)="close.emit()" class="icon-inline icon-text-white">プライバシーポリシー</span>
+        </li>
+        <li>
+            <span class="icon-inline icon-external-link-white" (click)="openWebBrowse(portalSite)">シネマサンシャインポータルサイト</span>
+        </li>
+        <!-- <li><span (click)="logout.emit()" class="icon-inline icon-logout-white">ログアウト</span></li> -->
+    </ul>
+</div>

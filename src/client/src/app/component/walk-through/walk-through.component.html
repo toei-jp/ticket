@@ -1,0 +1,53 @@
+<div class="contents" [ngClass]="'step-' + step">
+    <swiper [config]="config">
+        <div class="swiper-wrapper walk-through">
+            <div class="swiper-slide">
+                <div class="inner">
+                    <div class="position-center">
+                        <p class="text-center large-text mb-middle">シネマサンシャイン<br>公式アプリへようこそ!</p>
+                        <div class="image text-center"><img src="/assets/images/walkThrough/welcome.svg" width="230" height="150"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="swiper-slide">
+                <div class="inner">
+                    <div class="position-center">
+                        <p class="text-center large-text mb-middle">いつでも<br>アプリ会員価格！</p>
+                        <div class="image text-center mb-middle"><img src="/assets/images/about/app_price.svg" width="230" height="150"></div>
+                        <p class="text-center">お得なアプリ会員価格で<br>チケットが購入できます。</p>
+                    </div>
+                </div>
+            </div> -->
+            <div class="swiper-slide">
+                <div class="inner">
+                    <div class="position-center">
+                        <p class="text-center large-text mb-middle">チケットを<br>スマートに購入！</p>
+                        <div class="image text-center mb-middle"><img src="/assets/images/about/purchase_smartly.svg" width="230" height="150"></div>
+                        <p class="text-center">一度このアプリ内で<br>チケットをご購入いただきますと<br>お客様情報が記録され、<br>次回以降は入力が不要になります。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="inner">
+                    <div class="position-center">
+                        <p class="text-center large-text mb-middle">スマホがそのまま入場券に！</p>
+                        <div class="image text-center mb-middle"><img src="/assets/images/about/app_ticket.svg" width="211" height="150"></div>
+                        <p class="text-center">チケット発券の手間いらず。<br>アプリの画面を見せるだけで入場できます。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="inner">
+                    <div class="position-center">
+                        <p class="text-center large-text mb-xx-large">それではアプリを<br>お楽しみください！</p>
+                        <div class="image text-center"><img src="/assets/images/common/logo_text.svg" width="150" height="17"></div>
+                    </div>
+                    <button class="btn btn-primary btn-block btn-bottom" (click)="start()">アプリを始める</button>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </swiper>
+</div>
+
+<app-loading *ngIf="isLoading"></app-loading>

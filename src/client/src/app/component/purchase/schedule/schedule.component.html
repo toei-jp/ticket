@@ -1,0 +1,43 @@
+<div class="contents bg-02" *ngIf="!isLoading">
+    <div class="inner" *ngIf="!maintenanceInfo.isMaintenance">
+        <p class="read mb-small small-text">鑑賞劇場、鑑賞作品、鑑賞日時を選択してください。</p>
+        <ul class="conditions mb-small">
+            <li class=" mb-x-small">
+                <div class="control-label mb-x-small small-x-text text-light-gray">鑑賞劇場</div>
+                <select class="form-control" name="theater" [(ngModel)]="conditions.theater" (change)="changeConditions()">
+                    <option value="">選択してください</option>
+                    <option *ngFor="let theater of theaters" value="{{ theater.location.branchCode }}">{{ theater.name.ja }}</option>
+                </select>
+            </li>
+            <li>
+                <div class="control-label mb-x-small small-x-text text-light-gray">鑑賞日時</div>
+                <select class="form-control" name="date" [(ngModel)]="conditions.date" (change)="changeConditions()">
+                    <option value="">選択してください</option>
+                    <option *ngFor="let date of dateList" value="{{ date.value }}">{{ date.displayText }} {{ date.serviceDay }}</option>
+                </select>
+            </li>
+        </ul>
+
+        <div *ngIf="!isLoading && filmOrder.length > 0">
+            <app-film-order *ngFor="let filmOrder of filmOrder" class="mb-x-small" [data]="filmOrder"></app-film-order>
+        </div>
+
+        <div class="no-schedule" *ngIf="!isLoading && filmOrder.length === 0">
+            <div class="mb-x-small" *ngIf="conditions.theater === ''">鑑賞劇場が選択されていません。</div>
+            <div class="mb-x-small" *ngIf="conditions.date === ''">鑑賞日時が選択されていません。</div>
+            <div class="mb-x-small" *ngIf="conditions.theater !== '' && conditions.date !== ''">上映作品がありません。</div>
+        </div>
+    </div>
+
+    <div class="inner" *ngIf="maintenanceInfo.isMaintenance">
+        <h2 class="mb-small large-text text-center">メンテナンスのお知らせ</h2>
+        <p class="read mb-small">
+            {{ maintenanceInfo.maintenanceText }}
+        </p>
+        <p class="large-text">
+            メンテナンス期間<br>
+            {{ maintenanceInfo.startDate | date: 'MM/dd HH:mm' }} - {{ maintenanceInfo.endDate | date: 'MM/dd HH:mm' }}
+        </p>
+    </div>
+</div>
+<app-loading *ngIf="isLoading"></app-loading>

@@ -1,0 +1,27 @@
+<div class="inner">
+    <div class="info">
+        <dl class="film">
+            <dt class="icon-film-name-gray"></dt>
+            <dd>{{ reservation.acceptedOffers[0].itemOffered.reservationFor.workPerformed.name }}</dd>
+        </dl>
+        <dl class="date">
+            <dt class="icon-date-gray"></dt>
+            <dd>
+                {{ reservation.acceptedOffers[0].itemOffered.reservationFor.coaInfo.dateJouei | amLocal | amDateFormat: 'YYYY/MM/DD' }} {{
+                reservation.acceptedOffers[0].itemOffered.reservationFor.startDate | timeFormat: reservation.acceptedOffers[0].itemOffered.reservationFor.coaInfo.dateJouei
+                }}-{{ reservation.acceptedOffers[0].itemOffered.reservationFor.endDate | timeFormat: reservation.acceptedOffers[0].itemOffered.reservationFor.coaInfo.dateJouei
+                }}
+            </dd>
+        </dl>
+        <dl class="theater">
+            <dt class="icon-location-gray"></dt>
+            <dd>
+                {{ reservation.acceptedOffers[0].itemOffered.reservationFor.superEvent.location.name.ja }} / {{ reservation.acceptedOffers[0].itemOffered.reservationFor.location.name.ja
+                }}
+            </dd>
+        </dl>
+    </div>
+    <div class="details">
+        <app-ticket-detail *ngFor="let offer of reservation.acceptedOffers; let index = index;" [reservation]="reservation" [offer]="offer" [index]="index"></app-ticket-detail>
+    </div>
+</div>

@@ -1,0 +1,75 @@
+
+:host {
+    height: 48px;
+    display: block;
+}
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 48px;
+    background-color: #000;
+    .logo {
+        position: absolute;
+        top: 50%;
+        left: 15px;
+        width: 40px;
+        margin-top: -9px;
+        img {
+            display: block;
+        }
+    }
+    h1 {
+        text-align: center;
+        line-height: 48px;
+        font-weight: normal;
+        padding: 0 60px;
+    }
+    .button {
+        display: block;
+        position: absolute;
+        top: 50%;
+        right: 15px;
+        margin-top: -8px;
+        width: 20px;
+        height: 16px;
+        div {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            margin-top: -0.5px;
+            width: 100%;
+            height: 1px;
+            background-color: #FFF;
+            &:first-child {
+                top: 0;
+                margin-top: 0;
+            }
+            &:last-child {
+                top: initial;
+                bottom: 0;
+                margin-top: 0;
+            }
+        }
+        &.active {
+            div {
+                opacity: 0;
+                &:first-child {
+                    opacity: 1;
+                    top: 50%;
+                    margin-top: -1px;
+                    transform: rotate(45deg);
+                }
+                &:last-child {
+                    opacity: 1;
+                    top: 50%;
+                    bottom: initial;
+                    margin-top: -1px;
+                    transform: rotate(-45deg);
+                }
+            }
+        }
+    }
+}

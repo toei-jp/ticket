@@ -1,0 +1,15 @@
+<div class="performance" 
+[ngClass]="(salseFlg) ? (performance.offer.availability | availability).className : ''" 
+(click)="(salseFlg) ? performanceSelect() : null;"> 
+    <div class="mb-xx-small text-center">
+        <strong class="large-text">{{ performance.startDate | timeFormat: performance.coaInfo.dateJouei }}</strong>
+    </div>
+    <div class="mb-x-small text-center">
+        <span>～ {{ performance.endDate | timeFormat: performance.coaInfo.dateJouei }}</span>
+    </div>
+    <div class="screen text-center">{{ performance.location.name.ja }}</div>
+    <div *ngIf="salseFlg" class="status" [ngClass]="(performance.offer.availability | availability).icon"></div>
+    <div *ngIf="!salseFlg" class="status window small-x-text">窓口</div>
+    <div *ngIf="performance.coaInfo?.kbnService?.kubunCode === '001'" class="service icon-first-show-white"></div>
+    <div *ngIf="performance.coaInfo?.kbnService?.kubunCode === '002'" class="service icon-late-show-white"></div>
+</div>
