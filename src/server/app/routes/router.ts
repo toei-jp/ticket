@@ -20,6 +20,6 @@ export default (app: express.Application) => {
     app.get('/api/maintenance/confirm', maintenance.confirm);
 
     app.get('*', (_req, res, _next) => {
-        res.sendFile(`${__dirname}/dist/client${process.env.NODE_ENV}/index.html`);
+        res.sendFile(`${__dirname}/../../../client/${process.env.NODE_ENV}/index.html`);
     });
 };

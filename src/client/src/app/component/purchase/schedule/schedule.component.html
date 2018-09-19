@@ -1,10 +1,11 @@
 <div class="contents bg-02" *ngIf="!isLoading">
     <div class="inner" *ngIf="!maintenanceInfo.isMaintenance">
-        <p class="read mb-small small-text">鑑賞劇場、鑑賞作品、鑑賞日時を選択してください。</p>
+        <p class="read mb-small small-text" *ngIf="isTheaterChangeable">鑑賞劇場、鑑賞作品、鑑賞日時を選択してください。</p>
+        <p class="read mb-small small-text" *ngIf="!isTheaterChangeable">鑑賞作品、鑑賞日時を選択してください。</p>
         <ul class="conditions mb-small">
-            <li class=" mb-x-small">
+            <li class=" mb-x-small" *ngIf="isTheaterChangeable">
                 <div class="control-label mb-x-small small-x-text text-light-gray">鑑賞劇場</div>
-                <select class="form-control" name="theater" [(ngModel)]="conditions.theater" (change)="changeConditions()">
+                <select class="form-control" name="theater" [(ngModel)]="conditions.theater.branchCode" (change)="changeConditions()">
                     <option value="">選択してください</option>
                     <option *ngFor="let theater of theaters" value="{{ theater.location.branchCode }}">{{ theater.name.ja }}</option>
                 </select>

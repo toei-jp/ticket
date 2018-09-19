@@ -65,7 +65,7 @@ export class HeaderComponent implements OnInit {
      */
     private changePage(url: string): void {
         const page = pages.find((value) => {
-            return (value.url === url);
+            return (value.url === url || url.split('?')[0] === value.url); // クエリがある場合
         });
         if (page === undefined) {
             this.page = { url: '', title: 'NOT FOUND', prev: false };

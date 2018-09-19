@@ -6,9 +6,9 @@ export const environment = {
     production: false,
     version: '1.0.0',
 
-    region: '', // identity poolのリージョンを指定する
+    region: 'ap-northeast-1', // identity poolのリージョンを指定する
 
-    identityPoolId: '', // identity poolのID(AWS consoleで確認)
+    identityPoolId: 'ap-northeast-1:49f4caee-80e0-429a-8f8d-4850b626d96d', // identity poolのID(AWS consoleで確認)
     userPoolId: '',
     clientId: '',
 

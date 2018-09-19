@@ -13,7 +13,7 @@ import * as qrcode from 'qrcode';
 })
 export class TicketDetailComponent implements OnInit {
     @Input() public reservation: cinerino.factory.order.IOrder;
-    @Input() public offer: cinerino.factory.order.IOffer;
+    @Input() public offer: cinerino.factory.order.IAcceptedOffer<cinerino.factory.order.IItemOffered>;
     @Input() public index: number;
     public showQrCode: boolean;
     public qrCode: string;
@@ -22,8 +22,8 @@ export class TicketDetailComponent implements OnInit {
 
     public async ngOnInit() {
         this.showQrCode = moment(this.offer.itemOffered.reservationFor.startDate).subtract(24, 'hours').unix() <= moment().unix();
-        if (this.showQrCode) {
-            const value = this.offer.itemOffered.reservedTicket.ticketToken;
+        const value = this.offer.itemOffered.reservedTicket.ticketToken;
+        if (this.showQrCode && value !== undefined) {
             const basicSize = 21;
             const option: qrcode.QRCodeToDataURLOptions = {
                 margin: 0,

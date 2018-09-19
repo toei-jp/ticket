@@ -7,9 +7,9 @@
         <dl class="date">
             <dt class="icon-date-gray"></dt>
             <dd>
-                {{ reservation.acceptedOffers[0].itemOffered.reservationFor.coaInfo.dateJouei | amLocal | amDateFormat: 'YYYY/MM/DD' }} {{
-                reservation.acceptedOffers[0].itemOffered.reservationFor.startDate | timeFormat: reservation.acceptedOffers[0].itemOffered.reservationFor.coaInfo.dateJouei
-                }}-{{ reservation.acceptedOffers[0].itemOffered.reservationFor.endDate | timeFormat: reservation.acceptedOffers[0].itemOffered.reservationFor.coaInfo.dateJouei
+                <!--{{ reservation.acceptedOffers[0].itemOffered.reservationFor.info.dateJouei | amLocal | amDateFormat: 'YYYY/MM/DD' }}--> {{
+                reservation.acceptedOffers[0].itemOffered.reservationFor.startDate
+                }}-{{ reservation.acceptedOffers[0].itemOffered.reservationFor.endDate
                 }}
             </dd>
         </dl>

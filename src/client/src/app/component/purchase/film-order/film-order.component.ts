@@ -2,7 +2,7 @@
  * FilmOrderComponent
  */
 import { Component, Input, OnInit } from '@angular/core';
-import { IIndividualScreeningEvent } from '../../../service/schedule/schedule.service';
+import { IScreeningEvent } from '../../../service/schedule/schedule.service';
 
 @Component({
     selector: 'app-film-order',
@@ -12,9 +12,9 @@ import { IIndividualScreeningEvent } from '../../../service/schedule/schedule.se
 export class FilmOrderComponent implements OnInit {
     @Input() public data: {
         id: string;
-        films: IIndividualScreeningEvent[];
+        films: IScreeningEvent[];
     };
-    public filmInfo: IIndividualScreeningEvent;
+    public filmInfo: IScreeningEvent;
 
     constructor() { }
 

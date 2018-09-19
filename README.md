@@ -15,16 +15,11 @@
 | `CINERINO_API_ENDPOINT`             | true     |                  | CINERINO API エンドポイント                 |
 | `CLIENT_ID`                         | true     |                  | クライアントID                           |
 | `CLIENT_SECRET`                     | true     |                  | クライアントSECRET                       |
-| `CLIENT_ID_OAUTH2`                  | true     |                  | OAUTH2クライアントID                     |
-| `CLIENT_SECRET_OAUTH2`              | true     |                  | OAUTH2クライアントSECRET                 |
 | `AUTHORIZE_SERVER_DOMAIN`           | true     |                  | 認可サーバードメイン                      |
-| `OAUTH2_SERVER_DOMAIN`              | true     |                  | OAUTH2認可サーバードメイン                |
 | `RESOURCE_SERVER_URL`               | true     |                  | リソースサーバーURL                      |
-| `AUTH_REDIRECT_URI`                 | true     |                  | サインインリダイレクトURL                 |
-| `AUTH_LOGUOT_URI`                   | true     |                  | サインアウトリダイレクトURL               |
-| `TOEI_ALLOWED_IPS`                  | false    |                  | IP制限IPリスト(カンマ区切り)              |
-| `TOEI_BASIC_AUTH_NAME`              | false    |                  | ベーシック認証ID                         |
-| `TOEI_BASIC_AUTH_PASS`              | false    |                  | ベーシック認証PASS                       |
+| `ALLOWED_IPS`                  | false    |                  | IP制限IPリスト(カンマ区切り)              |
+| `BASIC_AUTH_NAME`              | false    |                  | ベーシック認証ID                         |
+| `BASIC_AUTH_PASS`              | false    |                  | ベーシック認証PASS                       |
 | `MAINTENANCE_TIME`                  | false    |                  | メンテナンス期間(カンマ区切り)                      |
 | `MAINTENANCE_TEXT`                  | false    |                  | メンテナンス文言(BASE64エンコード)                       |
 | `DEBUG`                             | false    | toei -ticket:*   | デバッグ                                |

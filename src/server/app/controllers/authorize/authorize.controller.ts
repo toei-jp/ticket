@@ -8,17 +8,10 @@ import { Auth2Model } from '../../models/auth2/auth2.model';
 import { errorProsess } from '../base/base.controller';
 const log = debug('ticket:authorize');
 
-export async function getCredentials(req: Request, res: Response) {
+export async function getCredentials(__: Request, res: Response) {
     log('getCredentials');
     try {
-        let authModel;
-        if (req.query.member === MemberType.NotMember) {
-            authModel = new AuthModel((<Express.Session>req.session).auth);
-        } else if (req.query.member === MemberType.Member) {
-            authModel = new Auth2Model((<Express.Session>req.session).auth);
-        } else {
-            throw new Error('member does not macth MemberType');
-        }
+        const authModel = new AuthModel();
         const options = {
             endpoint: (<string>process.env.CINERINO_API_ENDPOINT),
             auth: authModel.create()
@@ -28,7 +21,6 @@ export async function getCredentials(req: Request, res: Response) {
             accessToken: accessToken
         };
 
-        log('getCredentials MemberType', req.query.member);
         res.json(credentials);
     } catch (err) {
         errorProsess(res, err);

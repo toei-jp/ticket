@@ -2,10 +2,10 @@
  * ScheduleComponent
  */
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IMaintenance, MaintenanceService } from '../../../service/maintenance/maintenance.service';
 import { IDate, IFilmOrder, IMovieTheater, ScheduleService } from '../../../service/schedule/schedule.service';
-import { SelectService } from '../../../service/select/select.service';
+import { IPurchaseSelect, SelectService } from '../../../service/select/select.service';
 
 @Component({
     selector: 'app-schedule',
@@ -19,10 +19,11 @@ import { SelectService } from '../../../service/select/select.service';
  */
 export class ScheduleComponent implements OnInit {
     public isLoading: boolean;
+    public isTheaterChangeable: boolean;
     public theaters: IMovieTheater[];
     public dateList: IDate[];
     public filmOrder: IFilmOrder[];
-    public conditions: { theater: string; date: string };
+    public conditions: IPurchaseSelect;
     public error: string;
     public maintenanceInfo: IMaintenance;
 
@@ -30,7 +31,8 @@ export class ScheduleComponent implements OnInit {
         private router: Router,
         private schedule: ScheduleService,
         private select: SelectService,
-        private maintenance: MaintenanceService
+        private maintenance: MaintenanceService,
+        private activatedRoute: ActivatedRoute
     ) {
         this.theaters = [];
         this.dateList = [];
@@ -44,6 +46,7 @@ export class ScheduleComponent implements OnInit {
      */
     public async ngOnInit(): Promise<void> {
         this.isLoading = true;
+        this.isTheaterChangeable = true;
         try {
             this.maintenanceInfo = await this.maintenance.isMaintenance();
             if (this.maintenanceInfo.isMaintenance) {
@@ -52,6 +55,10 @@ export class ScheduleComponent implements OnInit {
                 return;
             }
             this.conditions = this.select.getSelect().purchase;
+            this.activatedRoute.queryParamMap.subscribe((query) => {
+                const theater = query.get('theater');
+                this.conditions.theater.keyword = theater === null ? '' : theater;
+            });
             await this.schedule.getSchedule();
             this.theaters = this.schedule.getTheater();
             await this.changeConditions();
@@ -77,10 +84,20 @@ export class ScheduleComponent implements OnInit {
             await this.schedule.getSchedule();
             this.theaters = this.schedule.getTheater();
             const selectTheater = this.theaters.find((theater) => {
-                return (theater.location.branchCode === this.conditions.theater);
+                if (this.conditions.theater.keyword !== '') {
+                    if (
+                        theater.location.name.en.toLocaleLowerCase()
+                            .indexOf(this.conditions.theater.keyword.toLocaleLowerCase()) >= 0
+                    ) {
+                        this.conditions.theater.branchCode = theater.location.branchCode;
+                        this.isTheaterChangeable = false;
+                        return true;
+                    }
+                }
+                return (theater.location.branchCode === this.conditions.theater.branchCode);
             });
             if (selectTheater === undefined) {
-                this.select.data.purchase.theater = '';
+                this.select.data.purchase.theater = { branchCode: '', keyword: '' };
                 this.select.data.purchase.date = '';
                 this.select.save();
                 this.isLoading = false;

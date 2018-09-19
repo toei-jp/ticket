@@ -9,7 +9,10 @@ export interface ISelect {
 }
 
 export interface IPurchaseSelect {
-    theater: string;
+    theater: {
+        branchCode: string,
+        keyword: string
+    };
     date: string;
 }
 
@@ -26,7 +29,10 @@ export class SelectService {
         if (this.data === undefined || this.data === null) {
             this.data = {
                 purchase: {
-                    theater: '',
+                    theater: {
+                        branchCode: '',
+                        keyword: ''
+                    },
                     date: ''
                 }
             };

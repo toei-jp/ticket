@@ -7,7 +7,7 @@ import * as moment from 'moment';
 import { environment } from '../../../../environments/environment';
 import { AwsCognitoService } from '../../../service/aws-cognito/aws-cognito.service';
 
-type IScreeningEvent = cinerino.factory.event.individualScreeningEvent.IEventWithOffer;
+type IScreeningEvent = cinerino.factory.chevre.event.screeningEvent.IEvent;
 
 @Component({
     selector: 'app-film-order-performance',
@@ -34,7 +34,7 @@ export class FilmOrderPerformanceComponent implements OnInit {
      * @method performanceSelect
      */
     public performanceSelect() {
-        if (this.performance.offer.availability === 0) {
+        if (this.performance.remainingAttendeeCapacity === 0) {
             return;
         }
         if (this.awsCognito.credentials === null) {
